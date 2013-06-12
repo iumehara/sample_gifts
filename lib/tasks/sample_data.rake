@@ -5,7 +5,7 @@ namespace :db do
 # Giver/Receiver/Provider: no attributes besides id, created_at, updated_at.
 
 
-  desc "Fill database with sample givers "
+  desc "Fill database with sample gifts, as well as a few givers/receivers, and a provider"
   task populate: :environment do
     
     Provider.create!
