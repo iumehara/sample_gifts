@@ -1,5 +1,10 @@
 namespace :db do
 
+# MODEL ATTRIBUTES
+# Gift :giver_id, :provider_id, :receiver_id, :status, :created_at, :updated_at
+# Giver/Receiver/Provider: no attributes besides id, created_at, updated_at.
+
+
   desc "Fill database with sample givers "
   task populate: :environment do
     
