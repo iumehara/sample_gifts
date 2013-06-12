@@ -2,7 +2,7 @@ namespace :db do
 
 # MODEL ATTRIBUTES
 # Gift :giver_id, :provider_id, :receiver_id, :status, :created_at, :updated_at
-# Giver/Receiver/Provider: no attributes besides id, created_at, updated_at.
+# User/Provider: no attributes besides id, created_at, updated_at.
 
 
   desc "Fill database with sample gifts, as well as a few givers/receivers, and a provider"
@@ -10,9 +10,8 @@ namespace :db do
     
     Provider.create!
 
-    5.times do
-      User.create!(giver: true)
-      User.create!(receiver: true)
+    10.times do
+      User.create!
     end    
 
     def gift_status(redeemed_ratio, open_ratio, unpaid_ratio)
@@ -36,8 +35,8 @@ namespace :db do
       orders_per_day.times do
         status = gift_status(75, 20, 5)
         random_datetime = date + biz_hours[rand(biz_hours.length)].hours + rand(59).minutes
-        givers = User.find_all_by_giver(true)
-        receivers = User.find_all_by_receiver(true)
+        givers = User.all
+        receivers = User.all
         Gift.create!(provider_id: Provider.first.id,
                      giver_id: givers[rand(givers.count - 1)].id,
                      receiver_id: receivers[rand(receivers.count - 1)].id,
